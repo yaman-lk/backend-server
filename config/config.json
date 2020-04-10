@@ -1,0 +1,14 @@
+{
+  "development": {
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb+srv://innathanak:bassaponnaya@cluster0-kxbmt.mongodb.net/innathanak?retryWrites=true&w=majority",
+    "JWT_SECRET": "bassaponnaya",
+    "JWT_EXP": "2h"
+  },
+  "production": {
+    "PORT": 80,
+    "MONGODB_URI": "mongodb+srv://innathanak:bassaponnaya@cluster0-kxbmt.mongodb.net/innathanak?retryWrites=true&w=majority",
+    "JWT_SECRET": "bassaponnaya",
+    "JWT_EXP": "2h"
+  }
+}
