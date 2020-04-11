@@ -5,7 +5,7 @@ const passport = require('passport');
 
 module.exports.register = (req, res, next) => {
   var user = new User();
-  user.fullName = req.body.fullName;
+  user.name = req.body.name;
   user.email = req.body.email;
   user.password = req.body.password;
   user.save((err, doc) => {
