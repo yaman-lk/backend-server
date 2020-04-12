@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 var bordingSchema = new mongoose.Schema({
   bordingType: {type: String},
-  residentType: {type: String},
+  residentType: {type: Array},
   location: {type: String},
   images: {type: Array},
   ownerId: {type: String},
   ownerDetails: {type: Object},
-  rental: {type: String},
-  keyMoney: {type: String},
+  rental: {type: Number},
+  keyMoney: {type: Number},
   description: {type: String},
   numberOfBeds: {type: Number},
   bathroomType: {type:String},
@@ -17,7 +17,7 @@ var bordingSchema = new mongoose.Schema({
   furniture: {type: Boolean},
   kitchen: {type: Boolean},
   numberOfRooms: {type: Number},
-  numberOfBathrooms: {type: Number},
+  numberOfBathrooms: {type: Number}
 });
 
 mongoose.model('Bording', bordingSchema);
