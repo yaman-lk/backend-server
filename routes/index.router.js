@@ -13,5 +13,6 @@ router.get('/postedBordings', jwtHelper.verifyJwtToken, ctrlBording.posted);
 
 router.post('/addNewBording', jwtHelper.verifyJwtToken, ctrlBording.add);
 router.get('/allBordings', ctrlBording.all);
+router.get('/bordingById/:id', ctrlBording.bordingById);
 
 module.exports = router ;
