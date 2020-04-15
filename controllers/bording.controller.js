@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Bording = mongoose.model('Bording');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports.add = (req, res) => {
   var bording = new Bording({
@@ -46,6 +47,24 @@ module.exports.posted = (req, res) => {
   Bording.find({ownerId : req._id}, (err, docs) => {
     if(docs) {
       if(docs.length > 0) {
+        return res.send(docs);
+      }
+      else{
+        return res.status(404).json({status: false, message: 'not found bording by this user'});
+      }
+    } else {
+      return res.status(404).json({status: false, message: 'not found bording by this user'});
+    }
+  });
+}
+
+module.exports.bordingById = (req, res) => {
+    // if(!ObjectId.isValid(req.params.id)){
+    //   return res.status(400).send("No records");
+    // }
+  Bording.findById(req.params.id, (err, docs) => {
+    if(docs) {
+      if(!err) {
         return res.send(docs);
       }
       else{
