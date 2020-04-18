@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Bording = mongoose.model('Bording');
+const User = mongoose.model('User');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports.add = (req, res) => {
@@ -57,6 +58,58 @@ module.exports.posted = (req, res) => {
     }
   });
 }
+
+
+module.exports.favourites = (req, res) => {
+  var favouriteIds = Array() ;
+  var favouriteBordings = Array() ;
+  var detailsReceiveCount = 0 ;
+  User.findById(req._id, (err, doc) => {
+    if(doc) {
+      if(!err) {
+        favouriteIds = doc.favouriteBordings
+        if(favouriteIds.length == 0) {
+          res.send(favouriteBordings)
+        } else {
+          for( var i=0; i<favouriteIds.length; i++) {
+            Bording.findById(favouriteIds[i], (err, doc) => {
+              detailsReceiveCount = detailsReceiveCount + 1 ;
+              if(doc) {
+                if(!err) {
+                  favouriteBordings.push(doc)
+                }
+              }
+              if(detailsReceiveCount == favouriteIds.length) {
+                res.send(favouriteBordings)
+              }
+            });
+          }
+        }
+      }
+      else{
+        return res.status(404).json({status: false, message: 'no user found'});
+      }
+    } else {
+      return res.status(404).json({status: false, message: 'no user found'});
+    }
+  });
+
+
+
+  // Bording.find({ownerId : req._id}, (err, docs) => {
+  //   if(docs) {
+  //     if(docs.length > 0) {
+  //       return res.send(docs);
+  //     }
+  //     else{
+  //       return res.status(404).json({status: false, message: 'not found bording by this user'});
+  //     }
+  //   } else {
+  //     return res.status(404).json({status: false, message: 'not found bording by this user'});
+  //   }
+  // });
+}
+
 
 module.exports.bordingById = (req, res) => {
     // if(!ObjectId.isValid(req.params.id)){
