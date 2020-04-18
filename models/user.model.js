@@ -18,9 +18,6 @@ var userSchema = new mongoose.Schema({
   },
   saltSecret: {
     type:String
-  },
-  favouriteBordings: {
-    type:Array
   }
 });
 
