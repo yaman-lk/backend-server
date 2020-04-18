@@ -59,9 +59,9 @@ module.exports.posted = (req, res) => {
 }
 
 module.exports.bordingById = (req, res) => {
-    // if(!ObjectId.isValid(req.params.id)){
-    //   return res.status(400).send("No records");
-    // }
+    if(!ObjectId.isValid(req.params.id)){
+      return res.status(400).send("No records");
+    }
   Bording.findById(req.params.id, (err, docs) => {
     if(docs) {
       if(!err) {
@@ -75,3 +75,4 @@ module.exports.bordingById = (req, res) => {
     }
   });
 }
+
