@@ -10,6 +10,7 @@ router.post('/registerUser', ctrlUser.register);
 router.post('/authenticateUser', ctrlUser.authenticate);
 router.get('/userProfile', jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 router.put('/addFavourite', jwtHelper.verifyJwtToken, ctrlUser.addFavourite);
+router.put('/updateProfilePicture', jwtHelper.verifyJwtToken, ctrlUser.updateProfilePicture);
 
 router.get('/favouriteBordings', jwtHelper.verifyJwtToken, ctrlBording.favourites);
 router.get('/postedBordings', jwtHelper.verifyJwtToken, ctrlBording.posted);

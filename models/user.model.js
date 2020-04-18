@@ -16,8 +16,11 @@ var userSchema = new mongoose.Schema({
   favouriteBordings: {
     type: Array,
   },
+  profilePictureUrl: {
+    type: String
+  },
   saltSecret: {
-    type:String
+    type: String
   }
 });
 
