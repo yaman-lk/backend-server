@@ -9,9 +9,10 @@ const ctrlBording = require('../controllers/bording.controller');
 router.post('/registerUser', ctrlUser.register);
 router.post('/authenticateUser', ctrlUser.authenticate);
 router.get('/userProfile', jwtHelper.verifyJwtToken, ctrlUser.userProfile);
-router.get('/postedBordings', jwtHelper.verifyJwtToken, ctrlBording.posted);
-router.get('/favouriteBordings', jwtHelper.verifyJwtToken, ctrlBording.favourites);
+router.put('/addFavourite', jwtHelper.verifyJwtToken, ctrlUser.addFavourite);
 
+router.get('/favouriteBordings', jwtHelper.verifyJwtToken, ctrlBording.favourites);
+router.get('/postedBordings', jwtHelper.verifyJwtToken, ctrlBording.posted);
 router.post('/addNewBording', jwtHelper.verifyJwtToken, ctrlBording.add);
 router.get('/allBordings', ctrlBording.all);
 router.get('/bordingById/:id', ctrlBording.bordingById);

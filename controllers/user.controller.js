@@ -45,3 +45,21 @@ module.exports.userProfile = (req, res, next) => {
     }
   });
 }
+
+module.exports.addFavourite = (req, res) => {
+  User.findByIdAndUpdate (req._id,
+    {
+      $push: {favouriteBordings: req.body.favouriteBording}
+    },
+    {
+      new: true
+    }, (err, doc) =>{
+      if(err){
+        return res.status(404).json({status: false, message: 'User record not found'});
+      }else{
+        res.send(doc);
+      }
+    }
+    );
+}
+
