@@ -13,6 +13,9 @@ var userSchema = new mongoose.Schema({
   password: {
     type: String,
   },
+  favouriteBordings: {
+    type: Array,
+  },
   saltSecret: {
     type:String
   }
