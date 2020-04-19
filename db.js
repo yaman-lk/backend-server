@@ -10,3 +10,4 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 
 require('./models/user.model');
 require('./models/bording.model');
+require('./models/inquiry.model');
