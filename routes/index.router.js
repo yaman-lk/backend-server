@@ -5,6 +5,7 @@ const ctrlUser = require('../controllers/user.controller');
 const jwtHelper = require('../config/jwtHelper');
 
 const ctrlBording = require('../controllers/bording.controller');
+const ctrlInquiry = require('../controllers/inquiry.controller');
 
 router.post('/registerUser', ctrlUser.register);
 router.post('/authenticateUser', ctrlUser.authenticate);
@@ -17,5 +18,7 @@ router.get('/postedBordings', jwtHelper.verifyJwtToken, ctrlBording.posted);
 router.post('/addNewBording', jwtHelper.verifyJwtToken, ctrlBording.add);
 router.get('/allBordings', ctrlBording.all);
 router.get('/bordingById/:id', ctrlBording.bordingById);
+
+router.post('/addInquiry', jwtHelper.verifyJwtToken, ctrlInquiry.addInquiry);
 
 module.exports = router ;
